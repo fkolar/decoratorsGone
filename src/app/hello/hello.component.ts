@@ -7,7 +7,6 @@ import {Component, OnInit, Input, ElementRef} from '@angular/core';
 })
 export class HelloComponent implements OnInit {
 
-
   @Input()
   toWhom: string = 'Pepa';
 

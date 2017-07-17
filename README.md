@@ -1,28 +1,72 @@
-# DecoratorsGone
+### Bug Report or Feature Request (mark with an `x`)
+```
+- [X] bug report -> please search issues before submitting
+- [ ] feature request
+```
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.2.
+### Versions.
+@angular/cli: 1.1.2
+node: 6.9.0
+os: darwin x64
+@angular/animations: 4.2.6
+@angular/common: 4.2.6
+@angular/compiler: 4.2.6
+@angular/core: 4.2.6
+@angular/forms: 4.2.6
+@angular/http: 4.2.6
+@angular/platform-browser: 4.2.6
+@angular/platform-browser-dynamic: 4.2.6
+@angular/router: 4.2.6
+@angular/cli: 1.1.2
+@angular/compiler-cli: 4.2.6
+@angular/language-service: 4.2.6
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+### Repro steps.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+I have created simple example under: https://github.com/fkolar/decoratorsGone, so when you clone it and run it with:
 
-## Build
+`ng serve --aot=true`, you will see output whereit contains `ctorParameters` but not `decorators`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+here I have simple class:
 
-## Running unit tests
+```ts
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+@Component({})
+export class HelloComponent implements OnInit {
+  @Input()
+  toWhom: string = 'Pepa';
 
-## Running end-to-end tests
+  @Input()
+  from: string = 'Jozo';
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+  constructor(private elementRef: ElementRef) {
+  }
+  ngOnInit() {
+  }
+}
+```
 
-## Further help
+when I ask for the ctorParameters and decorators:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```ts
+   let myType = HelloComponent;
+
+    console.log('ctor:', myType['ctorParameters']);
+    console.log('decorators: ', myType['decorators']);
+```
+
+it gives me only` ctorParameters`.
+
+`
+function () { return [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Z" /* ElementRef */] }]; }
+`
+
+### Desired functionality.
+I would expect when I use AOT and decorators are removed by ngtools/loader, I would have at least this information about input metadata saved under static property `HelloComponent.decorators`.
+
+
+### Mention any other details that might be useful.
+Not sure if this is really a bug and I have to do some additonal steps to see decorators or maybe something with NG build ?
+
