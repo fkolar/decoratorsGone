@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "outDir": "./out-simple",
+    "baseUrl": "src",
+    "module": "es2015",
+    "sourceMap": true,
+    "stripInternal": true,
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+
+    "moduleResolution": "node",
+    "lib": ["es2015", "dom"],
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "typeRoots": [
+      "./node_modules/@types/"
+    ]
+  },
+
+  "files": [
+    "src/main.ts"
+  ],
+  "exclude": [
+    "./main-aot.ts",
+    "./src/test.ts",
+    "**/*.spec.ts"
+  ],
+
+  "angularCompilerOptions": {
+    "strictMetadataEmit": true,
+    "annotateForClosureCompiler":"static fields"
+
+  }
+}

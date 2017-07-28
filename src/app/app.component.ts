@@ -1,4 +1,4 @@
-import {Component, OnInit, Type} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HelloComponent} from './hello/hello.component';
 
 @Component({
@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
 
     let myType = HelloComponent;
 
-    console.log('ctor:', myType['ctorParameters']);
-    console.log('decorators: ', myType['decorators']);
+    debugger;
+    console.log('decorators: ', Object.keys(myType));
   }
 }

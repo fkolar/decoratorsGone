@@ -6,8 +6,16 @@
     "baseUrl": "",
     "types": []
   },
+  "files": [
+    "./main"
+  ],
+  "angularCompilerOptions": {
+    "skipMetadataEmit" : false
+  },
   "exclude": [
     "test.ts",
+    "main-aot.ts",
+    "main-aot-closure.ts",
     "**/*.spec.ts"
   ]
 }

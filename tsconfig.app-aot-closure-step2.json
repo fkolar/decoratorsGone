@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "rootDir": ".",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "./out-aot/es6",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": ["es2015", "dom"],
+    "noImplicitAny": true,
+    "stripInternal": true,
+    "inlineSources": true,
+    "skipLibCheck": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "typeRoots": [
+      "./node_modules/@types/"
+    ]
+  },
+  "files": [
+    "./src/main-aot-closure.ts"
+  ],
+  "exclude": [
+    "./main-aot.ts",
+    "./main.ts",
+    "./src/test.ts",
+    "**/*.spec.ts"
+  ],
+
+  "angularCompilerOptions": {
+    "genDir": "./out-aot",
+    "annotateForClosureCompiler": true,
+    "annotationsAs": "static fields"
+  }
+}
