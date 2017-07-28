@@ -92,7 +92,7 @@ But if build your app without `ng` just with `ngc`, then output is as expected. 
     npm run build:aot
 ``` 
 
-Then check the `out-aot/build.js` and all `__decorators` meta are remove and replaced with
+Then check the `out-aot/build.js` and all `__decorators` meta are removed and replaced with
 static properties describing the meta.
 
 ```ts
@@ -131,5 +131,20 @@ So NGC already does it for us, so why to have additional steps in the `@ngtools/
 to remove everything and then re-add `ctorParameters`
 
 
- 
+I think it simply must work even for NG. Could it be just timing where you remove decorators before
+it comes to ngc or something similar ? Somewhere inside you 
+
+Also if you notice inside `tsconfig.app-aot-step2.json` I dont even specify
+
+```json
+    "annotationsAs": "static fields"
+```
+
+it seems to be default behavior when 
+
+```
+    "skipMetadataEmit" : false
+```
+
+or is missing.
 
