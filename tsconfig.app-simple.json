@@ -5,9 +5,10 @@
     "module": "es2015",
     "sourceMap": true,
     "stripInternal": true,
-    "declaration": false,
+    "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "target": "es5",
 
     "moduleResolution": "node",
@@ -30,7 +31,7 @@
 
   "angularCompilerOptions": {
     "strictMetadataEmit": true,
-    "annotateForClosureCompiler":"static fields"
+    "annotationsAs":"static fields"
 
   }
 }
